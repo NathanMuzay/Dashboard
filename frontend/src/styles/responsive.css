@@ -1,0 +1,209 @@
+/* Shared responsive layout */
+@media (min-width: 1500px) {
+  .widget-card {
+    padding: 26px;
+  }
+}
+@media (max-width: 1100px) {
+  .landing-hero {
+    gap: 35px;
+    padding: 65px 32px;
+  }
+  .site-header {
+    padding: 0 32px;
+  }
+  .feature-section {
+    margin-inline: 32px;
+    gap: 50px;
+  }
+
+  .dashboard-main {
+    padding: 32px 0;
+  }
+
+  .widget-workspace-header {
+    flex-wrap: wrap;
+  }
+  .widget-card {
+    padding: 18px;
+  }
+}
+@media (max-width: 800px) {
+  .site-header {
+    height: 76px;
+    padding-inline: 22px;
+  }
+  .site-header nav {
+    gap: 16px;
+  }
+  .site-header nav > a {
+    display: none;
+  }
+  .landing-hero {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding: 50px 24px;
+  }
+  .hero-copy h1 {
+    font-size: 54px;
+  }
+  .product-preview {
+    max-width: 540px;
+    width: 100%;
+    margin: auto;
+    transform: none;
+  }
+  .feature-section {
+    grid-template-columns: 1fr;
+    margin: 0 24px;
+    gap: 30px;
+    padding: 48px 0;
+  }
+  .site-footer {
+    padding: 26px 24px;
+    flex-wrap: wrap;
+  }
+  .site-footer > span {
+    display: none;
+  }
+
+  .dashboard-main {
+    padding: 26px 0;
+  }
+  .dashboard-intro h1,
+  .account-page h1 {
+    font-size: 28px;
+  }
+  .dashboard-intro {
+    padding-inline: 24px;
+    padding-bottom: 25px;
+  }
+  .greeting-symbol {
+    width: 55px;
+    height: 55px;
+  }
+  .greeting-symbol svg {
+    width: 30px;
+  }
+  .widget-board {
+    display: flex;
+    flex-direction: column;
+  }
+  .widget-card {
+    min-height: 270px;
+    padding: 22px;
+  }
+  .widget-resize-handle,
+  .widget-grid-dots,
+  .widget-drag-preview,
+  .widget-row-controls,
+  .drag-hint {
+    display: none;
+  }
+  .is-arranging .widget-card-header {
+    cursor: default;
+  }
+  .widget-board-meta {
+    line-height: 1.5;
+    align-items: flex-start;
+  }
+  .widget-board-meta span:last-child {
+    text-align: right;
+    max-width: 65%;
+  }
+  .widget-workspace-header {
+    gap: 20px;
+  }
+  .workspace-actions {
+    width: 100%;
+  }
+  .workspace-actions .add-widget-button {
+    flex: 1;
+  }
+  .widget-workspace {
+    margin-top: 25px;
+  }
+  .notes-content textarea {
+    min-height: 130px;
+  }
+  .app-dialog {
+    padding: 32px 24px;
+  }
+  .account-card {
+    padding: 24px;
+    gap: 18px;
+  }
+}
+@media (max-width: 420px) {
+  .site-header nav .button {
+    padding: 10px;
+    font-size: 11px;
+  }
+  .site-header nav .button svg {
+    display: none;
+  }
+  .site-header nav {
+    gap: 12px;
+  }
+  .hero-copy h1 {
+    font-size: 43px;
+  }
+  .hero-actions {
+    gap: 20px;
+  }
+  .hero-actions .button {
+    font-size: 12px;
+    padding: 12px;
+  }
+  .hero-footnote {
+    font-size: 10px;
+  }
+  .product-preview {
+    padding: 18px;
+  }
+  .preview-note,
+  .preview-focus {
+    padding: 18px 12px;
+  }
+  .preview-focus > strong {
+    font-size: 33px;
+  }
+  .preview-note p {
+    font-size: 14px;
+  }
+  .preview-agenda {
+    padding: 16px 12px;
+    gap: 12px;
+  }
+  .feature-panel {
+    padding: 24px;
+  }
+  .feature-panel h3 {
+    font-size: 25px;
+  }
+  .widget-type-picker {
+    grid-template-columns: 1fr 1fr;
+  }
+  .account-card {
+    flex-direction: column;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+.widget-order-controls { display:flex; gap:8px; margin-bottom:8px; }
+@media (max-width:800px) {
+  .dashboard-toolbar { padding-inline:16px; }
+  .dashboard-toolbar > label { width:100%; }
+  .dashboard-toolbar select { flex:1; min-width:0; }
+  .widget-actions button, .widget-order-controls button { min-width:44px; min-height:44px; }
+  .notification-center .text-button { font-size:11px; }
+}

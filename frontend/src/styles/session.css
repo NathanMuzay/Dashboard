@@ -1,0 +1,29 @@
+.loading-screen {
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.session-alert {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--surface-alt);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 14px;
+  font-size: 12px;
+}
+.session-alert button {
+  border: 0;
+  background: transparent;
+  text-decoration: underline;
+}
+[hidden] {
+  display: none !important;
+}
+

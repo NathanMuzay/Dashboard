@@ -1,0 +1,41 @@
+# Dépendances
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Fichiers générés et rapports de tests
+dist/
+build/
+target/
+coverage/
+.next/
+.nuxt/
+.cache/
+
+# Variables d'environnement et secrets locaux
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Journaux
+*.log
+
+# Configuration locale des éditeurs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+Desktop.ini
+launch.sh
+
+# Rapports navigateur
+frontend/test-results/
+frontend/playwright-report/

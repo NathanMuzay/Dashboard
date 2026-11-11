@@ -1,0 +1,45 @@
+import { test, expect } from '@playwright/test';
+test.use({video:{mode:'on',size:{width:1440,height:900}},viewport:{width:1440,height:900},launchOptions:{slowMo:250}});
+test('demonstration locale enregistrée @demo',async ({page}, testInfo)=>{
+  test.skip(!process.env.DEMO_RECORD,'Enregistrement volontaire : DEMO_RECORD=1');
+  test.setTimeout(240000);
+  async function chapter(text,seconds=8) {
+    await page.evaluate(text=>{document.getElementById('demo-caption')?.remove();const caption=document.createElement('div');caption.id='demo-caption';caption.textContent=text;Object.assign(caption.style,{position:'fixed',bottom:'18px',left:'15%',width:'70%',padding:'16px',textAlign:'center',background:'#142735',color:'white',font:'20px sans-serif',borderRadius:'10px',zIndex:'10000',pointerEvents:'none'});document.body.appendChild(caption);},text);
+    await page.screenshot({path:testInfo.outputPath(`etape-${String(++chapter.number).padStart(2,'0')}.png`)});
+    await page.waitForTimeout(seconds*1000);
+  }
+  chapter.number=0;
+  await page.goto('/');await chapter('Lumi — dashboard personnalisable. Démonstration locale, compte de test.');
+  await page.getByRole('button',{name:'Se connecter',exact:true}).first().click();
+  await page.getByLabel('Adresse e-mail',{exact:true}).fill('demo@lumi.local');await page.getByLabel('Mot de passe',{exact:true}).fill('lumi-demo');await page.getByRole('button',{name:/^Se connecter/}).last().click();
+  await expect(page.getByLabel('Dashboard actif')).toBeVisible();
+  await page.getByRole('button',{name:'Nouveau dashboard',exact:true}).click();await page.getByLabel('Nom',{exact:true}).fill('Démonstration Lumi');await page.getByRole('button',{name:'Enregistrer',exact:true}).click();
+  await chapter('Chaque compte possède ses dashboards. La sauvegarde utilise PostgreSQL.');
+  await page.getByRole('button',{name:'Ajouter un widget',exact:false}).first().click();await page.getByRole('button',{name:'Notes',exact:false}).last().click();await page.getByLabel('Nom du widget').fill('Objectifs de la journée');await page.getByLabel('Contenu',{exact:true}).fill('Finaliser le dashboard\nVérifier les services\nPréparer la soutenance');
+  await chapter('Configuration avant ajout : titre, contenu, taille et position.');
+  await page.getByRole('button',{name:/Ajouter au dashboard/}).click();await expect(page.getByText('Enregistré dans votre compte',{exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Ajouter un widget',exact:false}).first().click();await page.getByRole('button',{name:'Focus',exact:false}).last().click();await page.getByLabel('Nom du widget').fill('Concentration');await page.getByRole('button',{name:/Ajouter au dashboard/}).click();await expect(page.getByText('Enregistré dans votre compte',{exact:true})).toBeVisible();
+  await chapter('Plusieurs widgets cohabitent : notes et minuteur de concentration.');
+  await page.getByRole('button',{name:'Organiser',exact:true}).click();await page.getByRole('button',{name:'Descendre Objectifs de la journée',exact:true}).click();await page.getByRole('button',{name:'Terminer',exact:true}).click();await expect(page.getByText('Enregistré dans votre compte',{exact:true})).toBeVisible();
+  await chapter('Réorganisation au clavier ou au toucher, avec sauvegarde automatique.');
+  const id=await page.getByLabel('Dashboard actif').inputValue();await page.reload();await page.getByLabel('Dashboard actif').selectOption(id);
+  await chapter('Après rechargement, les widgets et leurs paramètres sont restaurés.');
+  await page.getByRole('button',{name:'Mon compte',exact:false}).click();
+  const githubToggle = page.getByRole('button', { name: /^(Activer|Désactiver) GitHub$/ });
+  await expect(githubToggle).toBeVisible();
+  if (await githubToggle.getAttribute('aria-pressed') === 'false') await githubToggle.click();
+  await page.getByRole('heading',{name:'Mes services'}).scrollIntoViewIfNeeded();
+  await chapter('Gestion des abonnements : Spotify, Gmail, Google Calendar et GitHub.');
+  await page.getByRole('button',{name:'Tableau de bord',exact:false}).click();await page.getByRole('button',{name:'Ajouter un widget',exact:false}).first().click();await page.getByRole('button',{name:/GitHub · Graphe/}).click();await page.getByLabel('Dépôt GitHub',{exact:true}).fill('octocat/Hello-World');await page.getByLabel('Nom du widget').fill('Historique GitHub');
+  await chapter('Chaque instance dispose de sa configuration et de son intervalle de rafraîchissement.');
+  await page.getByRole('button',{name:/Ajouter au dashboard/}).click();await expect(page.getByText('Enregistré dans votre compte',{exact:true})).toBeVisible();
+  await page.getByRole('heading',{name:'Historique GitHub',exact:true}).scrollIntoViewIfNeeded();
+  await chapter('GitHub consulte un dépôt public réel. Les intégrations privées demandent une autorisation.');
+  const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'Exporter',exact:true}).click();const download=await downloadPromise;await download.saveAs('../docs/demo/dashboard-exemple.json');
+  await chapter('Export JSON sans jetons externes. L’import crée un nouveau dashboard.');
+  await page.setViewportSize({width:390,height:844});await page.goto('/');await page.getByLabel('Dashboard actif').selectOption(id);
+  await chapter('Le même espace sur mobile, avec des commandes tactiles.',6);
+  await page.setViewportSize({width:1440,height:900});await page.getByRole('button',{name:'Mon compte',exact:false}).click();
+  await chapter('Milo Bousquet et Nathan Muzay — conception et développement communs.',8);
+  await page.context().close();
+});

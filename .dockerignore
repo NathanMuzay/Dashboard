@@ -1,0 +1,15 @@
+.git
+.env
+.env.*
+**/node_modules
+**/target
+**/dist
+**/.env*
+
+# Rapports et livrables sans utilité dans les images
+**/test-results
+**/playwright-report
+**/coverage
+docs/demo
+.agents
+.codex

@@ -1,0 +1,24 @@
+.habits-widget { min-width: 0; overflow: auto; display: flex; flex-direction: column; gap: 12px; }
+.habits-toolbar, .habits-navigation { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.habits-toolbar { justify-content: space-between; }
+.habits-navigation span { font-size: .8rem; font-weight: 600; }
+.habits-toolbar button { border: 1px solid var(--line, #ccc); border-radius: 6px; background: transparent; color: inherit; padding: 6px 10px; min-height: 36px; cursor: pointer; }
+.habits-toolbar button:disabled { opacity: .45; cursor: default; }
+.habits-summary { display: flex; align-items: baseline; gap: 12px; }
+.habits-summary strong { font-size: 1.65rem; }
+.habits-summary span, .habits-footnote { font-size: .75rem; }
+.habits-progress { width: 100%; height: 6px; accent-color: var(--ink); }
+.habits-table-scroll { overflow-x: auto; max-width: 100%; flex-shrink: 0; }
+.habits-table { border-collapse: collapse; width: 100%; min-width: 460px; font-size: .8rem; }
+.habits-table th, .habits-table td { padding: 9px 6px; border-bottom: 1px solid var(--line, #ccc); text-align: center; }
+.habits-table th:first-child { text-align: left; min-width: 110px; max-width: 200px; overflow-wrap: anywhere; }
+.habits-table thead th { font-weight: 500; font-size: .7rem; }
+.habits-table thead span { display: block; }
+.habits-table [data-today="true"] { background: color-mix(in srgb, currentColor 7%, transparent); }
+.habits-table input[type="checkbox"] { width: 20px; height: 20px; margin: 0; accent-color: var(--ink); cursor: pointer; }
+.habits-table input:disabled { cursor: default; opacity: .3; }
+.habits-streak { white-space: nowrap; }
+.habits-empty { padding: 20px 0; line-height: 1.6; }
+.habits-editor-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+.habits-editor-row input { flex: 1; min-width: 0; }
+.habits-editor-row button { flex-shrink: 0; }

@@ -1,0 +1,78 @@
+/* Taille réelle mesurée par useWidgetSize ; règles communes à tous les modules.
+   Le défilement reste possible aux tailles extrêmes pour les commandes essentielles. */
+.widget-card {
+  container-type: inline-size;
+  padding: clamp(8px, 1.5vw, 22px);
+}
+.widget-card-header { flex-shrink: 0; gap: 4px; }
+.widget-heading h3 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.widget-card :is(.notes-content, .spotify-widget-content) { flex: 1; min-height: 0; height: auto; min-width: 0; }
+.widget-card .notes-content textarea { min-height: 32px; }
+.widget-card .focus-clock { font-size: clamp(24px, 18cqi, 64px); }
+.widget-card .weather-content strong { font-size: clamp(28px, 22cqi, 72px); letter-spacing: -0.04em; }
+.widget-card .agenda-content strong { font-size: clamp(14px, 7cqi, 24px); overflow-wrap: anywhere; }
+.widget-card .focus-controls { flex-wrap: wrap; gap: 8px; }
+.widget-card .focus-controls .button { padding: 7px 10px; }
+.widget-card .spotify-track-list { flex: 1; min-height: 0; max-height: none; align-content: start; }
+.widget-card .spotify-time-range-picker { flex-wrap: wrap; }
+.widget-card .spotify-btn { height: auto; min-height: 36px; padding: 6px; font-size: 10px; overflow-wrap: anywhere; }
+.widget-card.spotify-widget-card > .spotify-widget-content { padding: 12px; }
+.widget-card .main-music-card { flex: 1; height: auto; min-height: 0; }
+.widget-card .main-music-card .control-button { flex-shrink: 0; margin-top: 0; }
+.widget-card .spotify-error-message, .widget-card .spotify-error-text { overflow-wrap: anywhere; }
+
+/* Faible hauteur : priorité au contenu et à l'action principale. */
+.widget-card:is([data-height='short'], [data-height='flat']) .widget-card-header { margin-bottom: 6px; }
+.widget-card:is([data-height='short'], [data-height='flat']) :is(
+  .widget-heading span:not(.widget-icon), .notes-content small, .agenda-content small,
+  .focus-content > p, .drag-hint, .spotify-notice, .spotify-redirect-hint,
+  .spotify-refresh-hint, .spotify-idle-message small, .volume-bars
+) { display: none; }
+.widget-card:is([data-height='short'], [data-height='flat']) .agenda-content { gap: 4px; margin-bottom: 0; padding-block: 0; }
+.widget-card:is([data-height='short'], [data-height='flat']) .weather-content { padding-bottom: 0; gap: 4px 10px; }
+.widget-card:is([data-height='short'], [data-height='flat']) .main-music-card { padding: 10px; gap: 8px; border-radius: 16px; }
+.widget-card:is([data-height='short'], [data-height='flat']) .album-art { width: 40px; height: 40px; }
+.widget-card:is([data-height='short'], [data-height='flat']) .spotify-player-footer { display: none; }
+.widget-card[data-height='flat'] { padding-block: 6px; }
+.widget-card[data-height='flat'] :is(.widget-icon, .focus-controls .text-button, .spotify-top-header, .spotify-footer, .spotify-badge-header) { display: none; }
+.widget-card[data-height='flat'] .focus-content { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.widget-card[data-height='flat'] .focus-clock { font-size: clamp(24px, 12cqi, 44px); }
+.widget-card[data-height='flat'] .weather-content strong { font-size: 36px; }
+.widget-card[data-height='flat'] .main-music-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-content: center; }
+.widget-card[data-height='flat'] .main-music-card .button-row { grid-column: 2; grid-row: 1; }
+.widget-card[data-height='flat'] .playback-controls { grid-column: 1 / -1; }
+.widget-card[data-height='flat'] .main-music-card .control-button { width: 28px; height: 28px; }
+.widget-card[data-height='flat'] .main-music-card .play-pause-button { width: 36px; height: 36px; }
+.widget-card[data-height='flat'] .main-music-card .main-control-btns { gap: 2px; }
+
+/* Faible largeur : moins de décoration et commandes secondaires masquées. */
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .widget-card-header { margin-bottom: 8px; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) :is(.widget-icon, .widget-heading span:not(.widget-icon), .volume-bars, .spotify-track-rank, .spotify-refresh-hint) { display: none; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .weather-content { grid-template-columns: 1fr; gap: 4px; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .weather-content strong { grid-row: auto; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .main-music-card { padding: 10px; border-radius: 16px; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .track-info { gap: 6px; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .album-art { width: 36px; height: 36px; border-radius: 8px; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .track-title { font-size: 13px; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .artist-name { font-size: 10px; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .main-music-card .button-row { justify-content: center; }
+.widget-card:is([data-width='narrow'], [data-width='tiny'], [data-height='short'], [data-height='flat']) .button-row > :is(.control-button, .spotify-playlist-wrap) { display: none; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .main-music-card .main-control-btns { gap: 2px; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .main-music-card .control-button { width: 30px; height: 30px; }
+.widget-card:is([data-width='narrow'], [data-width='tiny']) .main-music-card .play-pause-button { width: 38px; height: 38px; }
+.widget-card[data-width='tiny'] .widget-card-header { flex-wrap: wrap; }
+.widget-card[data-width='tiny'] :is(.notes-content small, .agenda-content small, .weather-content small, .weather-content span, .focus-content > p, .focus-controls .text-button, .album-art, .spotify-mini-cover, .spotify-player-footer, .spotify-notice, .spotify-redirect-hint, .drag-hint) { display: none; }
+.widget-card[data-width='tiny'] .agenda-content { padding-left: 6px; }
+.widget-card[data-width='tiny'] .main-control-btns .control-button:not(.play-pause-button) { display: none; }
+.widget-card[data-width='tiny'] .focus-controls .button { font-size: 9px; padding: 5px; }
+.widget-card[data-height='flat']:is([data-width='narrow'], [data-width='tiny']) :is(.playback-controls, .weather-content small, .weather-content span) { display: none; }
+.widget-card[data-height='flat'][data-width='tiny'] .focus-content { flex-direction: column; gap: 2px; }
+.widget-card[data-height='flat'][data-width='tiny'] .focus-controls .button { min-height: 26px; }
+.widget-card[data-height='flat'][data-width='tiny'] .widget-heading { display: none; }
+
+/* Le mode organisation réserve la poignée sans cacher Modifier / Supprimer. */
+.widget-card.is-arranging { padding-bottom: 30px; }
+.widget-card.spotify-widget-card.is-arranging .widget-card-header { margin: 4px 6px; }
+.widget-card .main-music-card .progress-bar:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.widget-card.spotify-widget-card { overflow: auto; }
+.widget-card[data-width='tiny'] .spotify-btn svg { display: none; }

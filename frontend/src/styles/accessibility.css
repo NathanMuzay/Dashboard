@@ -1,0 +1,50 @@
+/* Loaded last so mobile readability takes priority over compact desktop cards. */
+.accessibility-toggle {
+  display: block; margin: 8px 12px 8px auto;
+  min-height: 44px; padding: 10px 14px; font-size: 14px;
+  background: var(--surface); color: var(--ink); border: 2px solid var(--ink);
+  border-radius: var(--radius-control);
+}
+.accessibility-option { display: flex; align-items: center; gap: 12px; min-height: 48px; }
+.accessibility-option input { width: 24px; height: 24px; }
+:focus-visible { outline-color: var(--ink); }
+:root[data-high-contrast='true'] {
+  --muted: #333333; --line: #555555; --line-strong: #121212;
+}
+:root[data-theme='dark'][data-high-contrast='true'] {
+  --muted: #eeeeee; --line: #aaaaaa; --line-strong: #ffffff;
+}
+:root[data-large-text='true'] :is(p, small, label, input, select, textarea, button, dt, dd, .calendar-footer, .week-slot span, .week-slot strong, .field-hint, .muted, .eyebrow, .widget-heading span, .artist-name) {
+  font-size: 18px !important; line-height: 1.6;
+}
+:root[data-large-text='true'] .widget-board { display: flex; flex-direction: column; }
+:root[data-large-text='true'] .widget-card { min-height: 300px; height: auto; overflow: auto; }
+:root[data-large-text='true'] .widget-heading h3 { white-space: normal; overflow-wrap: anywhere; }
+:root[data-large-text='true'] .workspace-nav { height: auto; flex-wrap: wrap; }
+.field-hint, .dashboard-save-status, .account-card dt { font-size: 14px; }
+.widget-card .weather-content small { display: block; }
+@media (max-width: 800px) {
+  .account-page { padding-inline: 16px; }
+  .workspace-nav { position: static; height: auto; min-width: 0; flex-wrap: wrap; gap: 12px; padding: 16px; }
+  .workspace-nav nav { width: 100%; order: 3; display: flex; flex-wrap: wrap; }
+  .workspace-nav nav button { flex: 1 1 140px; min-height: 44px; font-size: 14px; padding: 10px; }
+  .workspace-user-actions { flex-wrap: wrap; gap: 8px; min-width: 0; }
+  .widget-workspace, .dashboard-controls { padding: 12px; min-width: 0; }
+  .widget-card { width: 100%; height: auto; min-height: 300px; overflow: auto; padding: 18px; }
+  .widget-heading { min-width: 0; }
+  .widget-heading h3 { white-space: normal; overflow-wrap: anywhere; font-size: 18px; }
+  .widget-card-header { flex-wrap: wrap; }
+  .widget-actions { flex-shrink: 0; }
+  .widget-card :is(p, small, label, .artist-name, .field-hint, .text-button, .spotify-btn, .notification-center .text-button) { font-size: 14px; line-height: 1.5; }
+  input, select, textarea { font-size: 16px !important; }
+  .workspace-actions, .dashboard-tools { flex-wrap: wrap; }
+  .workspace-actions button, .dashboard-tools button { white-space: normal; min-height: 44px; }
+  .app-dialog { max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); overflow: auto; }
+  .account-card dd, .weather-content small { overflow-wrap: anywhere; }
+  .widget-board-meta { flex-wrap: wrap; gap: 8px; }
+  .widget-board-meta span:last-child { max-width: 100%; text-align: left; }
+  .widget-size-fields { grid-template-columns: 1fr; }
+}
+@media (forced-colors: active) {
+  button, input, select, textarea, .widget-card { border: 1px solid ButtonText; }
+}

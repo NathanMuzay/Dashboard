@@ -1,0 +1,82 @@
+/* Spotify Now Playing */
+.main-music-card {
+  --spotify-card-background: var(--surface);
+  --spotify-control-background: var(--surface-alt);
+  --spotify-control-color: var(--ink);
+  --spotify-control-size: 42px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  max-width: none;
+  padding: 18px;
+  border-radius: 35px;
+  background: var(--spotify-card-background);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 20px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-family: var(--font-body);
+  color: var(--ink);
+  transition: all 0.3s ease;
+}
+.track-info { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.album-art {
+  width: 64px;
+  height: 64px;
+  display: block;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--surface-alt);
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: transform 0.3s ease;
+}
+.album-art:hover { transform: scale(1.05); }
+.album-art img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.track-details { flex-grow: 1; min-width: 0; overflow: hidden; }
+.track-title { display: block; color: var(--ink); font-size: 1.3em; font-weight: 600; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.artist-name { display: block; color: var(--muted); font-size: 0.9em; margin-top: 2px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.volume-bars { display: flex; align-items: flex-end; gap: 2px; width: 38px; height: 32px; flex-shrink: 0; }
+.volume-bars .bar { width: 3px; height: 6px; background: var(--accent); border-radius: var(--radius-control); animation: spotify-bounce 0.8s infinite ease-in-out; animation-delay: var(--delay); }
+@keyframes spotify-bounce { 0%, 100% { height: 6px; } 50% { height: 26px; } }
+.playback-controls { display: flex; flex-direction: column; gap: 8px; }
+.time-info { display: flex; justify-content: space-between; font-size: 0.8em; color: var(--muted); }
+.main-music-card .progress-bar {
+  width: 100%;
+  height: 4px;
+  padding: 0;
+  appearance: none;
+  border: 0;
+  border-radius: var(--radius-control);
+  outline: 0;
+  background: var(--surface-alt);
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.main-music-card .progress-bar::-webkit-slider-thumb { appearance: none; width: 10px; height: 10px; border: 0; border-radius: 50%; background: var(--ink); box-shadow: 0 0 6px var(--shadow); }
+.main-music-card .progress-bar::-moz-range-thumb { width: 10px; height: 10px; border: 0; border-radius: 50%; background: var(--ink); box-shadow: 0 0 6px var(--shadow); }
+.main-music-card .button-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.main-music-card .control-button { margin-top: 2%; width: var(--spotify-control-size); height: var(--spotify-control-size); padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--spotify-control-color); display: flex; justify-content: center; align-items: center; transition: background 0.2s, transform 0.2s; }
+.main-music-card .control-button:hover:not(:disabled) { background: var(--spotify-control-background); transform: scale(1.05); }
+.main-music-card .main-control-btns { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0; }
+.main-music-card .main-control-btns .control-button:nth-child(2) { width: 52px; height: 52px; background: var(--ink); color: var(--inverse); }
+.main-music-card .spotify-player-footer { color: var(--muted); }
+.main-music-card .spotify-player-footer a { color: var(--ink); }
+.main-music-card .spotify-link-btn { color: var(--muted); }
+.main-music-card .spotify-playlist-wrap { position: relative; }
+.spotify-player-footer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  color: var(--muted);
+  font-size: 10px;
+}
+.spotify-player-footer .spotify-link-btn { margin-left: auto; }
+@media (max-width: 420px) {
+  .main-music-card { padding: 15px; border-radius: 24px; }
+  .track-title { font-size: 1.05em; }
+  .volume-bars { display: none; }
+}

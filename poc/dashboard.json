@@ -1,0 +1,7 @@
+{
+  "name": "POC deux villes",
+  "widgets": [
+    { "id": "paris", "type": "weather", "title": "Paris", "city": "Paris, France", "refreshInterval": 300, "x": 1, "y": 1, "width": 6, "height": 2 },
+    { "id": "lyon", "type": "weather", "title": "Lyon", "city": "Lyon, France", "refreshInterval": 900, "x": 7, "y": 1, "width": 6, "height": 2 }
+  ]
+}

@@ -1,0 +1,15 @@
+/* Email actions */
+.email-auth-options { display: grid; gap: 2px; margin-top: 18px; }
+.email-auth-options .text-button { text-align: left; justify-self: start; }
+.verification-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; margin: 10px 0 0; border: 1px solid var(--line-strong); color: var(--ink); font-size: 10px; line-height: 1.5; font-family: var(--font-mono); }
+.account-card dd .verification-badge { display: table; }
+.verified-mark { display: inline-grid; place-items: center; width: 15px; height: 15px; margin-left: 3px; border: 1px solid var(--line-strong); border-radius: 50%; font-size: 9px; }
+.email-action-page { max-width: 620px; margin: auto; padding: 48px 24px; }
+.email-action-card { margin-top: 36px; padding: 32px; border: 1px solid var(--line); background: var(--surface); }
+.email-action-card h1 { font-size: 30px; letter-spacing: -.04em; line-height: 1.2; margin-top: 22px; }
+.email-action-card > p { font-size: 13px; }
+.email-action-footer { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 26px; border-top: 1px solid var(--line); padding-top: 16px; }
+.email-action-footer .text-button { font-size: 12px; }
+@media (max-width: 480px) { .email-action-page { padding: 28px 16px; }.email-action-card { padding: 24px 20px; } }
+
+

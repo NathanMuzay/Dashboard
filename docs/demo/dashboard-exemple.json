@@ -1,0 +1,36 @@
+{
+  "format": "lumi-dashboard",
+  "version": 1,
+  "name": "Démonstration Lumi",
+  "widgets": [
+    {
+      "id": "694d28fc-ea82-4265-94d4-ba678609f951",
+      "type": "github_graph",
+      "title": "Historique GitHub",
+      "x": 1,
+      "y": 5,
+      "width": 6,
+      "height": 4,
+      "githubRepo": "octocat/Hello-World"
+    },
+    {
+      "id": "711e75d4-53bb-4146-a023-de03cea867ec",
+      "type": "focus",
+      "title": "Concentration",
+      "x": 1,
+      "y": 1,
+      "width": 6,
+      "height": 2
+    },
+    {
+      "id": "6a621d36-ea3b-4582-a490-aa46b0e3344a",
+      "type": "notes",
+      "title": "Objectifs de la journée",
+      "x": 1,
+      "y": 3,
+      "width": 6,
+      "height": 2,
+      "content": "Finaliser le dashboard\nVérifier les services\nPréparer la soutenance"
+    }
+  ]
+}

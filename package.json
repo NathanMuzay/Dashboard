@@ -1,0 +1,18 @@
+{
+  "name": "lumi",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["frontend"],
+  "scripts": {
+    "services": "docker compose up -d --wait postgres mailpit",
+    "predev": "npm run services",
+    "dev": "concurrently --kill-others -n backend,frontend \"cargo run --manifest-path backend/Cargo.toml\" \"npm run dev -w frontend\"",
+    "build": "npm run build -w frontend && cargo build --release --manifest-path backend/Cargo.toml",
+    "start": "cargo run --release --manifest-path backend/Cargo.toml",
+    "test": "npm run test -w frontend && cargo test --manifest-path backend/Cargo.toml",
+    "seed:test": "cargo run --manifest-path backend/Cargo.toml --example seed_test_accounts",
+    "check:clean": "python3 scripts/check-clean.py",
+    "poc": "node scripts/poc.mjs"
+  },
+  "devDependencies": { "concurrently": "^9.2.0" }
+}

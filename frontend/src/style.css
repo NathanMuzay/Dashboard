@@ -1,0 +1,25 @@
+/* Point d’entrée global. Conserver cet ordre pour préserver la cascade.
+ * Variables partagées : styles/tokens.css.
+ * Les ajustements du thème passent après les styles des modules.
+ */
+@import './styles/tokens.css';
+@import './styles/base.css';
+@import './styles/components.css';
+@import './styles/landing.css';
+@import './styles/dashboard.css';
+@import './styles/widgets.css';
+@import './styles/forms.css';
+@import './styles/account.css';
+@import './styles/session.css';
+@import './styles/responsive.css';
+@import './styles/spotify.css';
+@import './styles/theme.css';
+@import './styles/email.css';
+@import './styles/spotify-player.css';
+@import './styles/widget-adaptive.css';
+@import './styles/gmail.css';
+@import './styles/github.css';
+@import './styles/calendar.css';
+
+@import '../../bonus/frontend/habits/habits.css';
+@import './styles/accessibility.css';
